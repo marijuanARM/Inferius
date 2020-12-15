@@ -21,7 +21,7 @@ def send_bootchain(processor, is_verbose):
         subprocess.run(('./resources/bin/irecovery', '-c', 'go'), stdout=subprocess.PIPE)
         utils.log('[VERBOSE] Booted iBEC', is_verbose)
         
-    time.sleep(3)
+    time.sleep(5)
     utils.log('[VERBOSE] Checking if device is in pwnrecovery...', is_verbose)
     recmode_check = subprocess.run('./resources/bin/lsusb', stdout=subprocess.PIPE, universal_newlines=True)
     utils.log(recmode_check.stdout, False)
@@ -56,7 +56,7 @@ def restore(ipsw_path, is_cellular, keep_data, downgrade_10, is_verbose):
     else:
         baseband = '--no-baseband'
 
-        futurerestore = subprocess.run(f'./resources/bin/futurerestore -t work/ipsw/blob.shsh2 {update} {sep_fw} {baseband} {ipsw_path}', stdout=sys.stdout)
+        futurerestore = subprocess.run(f'./resources/bin/futurerestore -t work/ipsw/blob.shsh2 {update} {sep_fw} {baseband} {ipsw_path}', stdout=sys.stdout, shell=True)
 
     if futurerestore.returncode != 0:
         utils.log('[ERROR] Restore failed!\nExiting...', True)
