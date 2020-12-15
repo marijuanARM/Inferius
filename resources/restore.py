@@ -105,8 +105,8 @@ def save_blobs(device_identifier, firm_bundle_number, board_configs, downgrade_1
 
         for shsh in glob.glob('work/ipsw/*.shsh2'):
             if shsh == 'work/ipsw/blob.shsh2':
-                continue
-            os.rename(shsh, 'work/ipsw/signing_blob.shsh2')
+                os.rename(shsh, 'work/ipsw/signing_blob.shsh2')
+                break
 
     utils.log('SHSH blobs saved!', True)
 
