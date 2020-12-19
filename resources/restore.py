@@ -56,7 +56,7 @@ def restore(ipsw_path, is_cellular, keep_data, downgrade_10, is_verbose):
     else:
         baseband = '--no-baseband'
 
-        futurerestore = subprocess.run(f'./resources/bin/futurerestore -t work/ipsw/blob.shsh2 {update} {sep_fw} {baseband} {ipsw_path}', stdout=sys.stdout, shell=True)
+    futurerestore = subprocess.run(f'./resources/bin/futurerestore -t work/ipsw/blob.shsh2 {update} {sep_fw} {baseband} {ipsw_path}', stdout=sys.stdout, shell=True)
 
     if futurerestore.returncode != 0:
         utils.log('[ERROR] Restore failed!\nExiting...', True)
