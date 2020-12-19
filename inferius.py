@@ -94,7 +94,7 @@ def restore_ipsw(fresh_ipsw, ipsw_path):
         ipsw.fetch_1033_sepbb(device_identifier, args.version[0], is_verbose)
 
     restore.send_bootchain(processor, is_verbose)
-    futurerestore = restore.restore(ipsw_path, ipsw.is_cellular(device_identifier), False, downgrade_10, is_verbose)
+    futurerestore = restore.restore(ipsw_path, ipsw.is_cellular(device_identifier), downgrade_10, is_verbose)
     if not futurerestore:
         sys.exit()
     else:

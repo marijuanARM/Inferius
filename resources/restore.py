@@ -33,13 +33,7 @@ def send_bootchain(processor, is_verbose):
         utils.log('[ERROR] Device did not enter recovery mode successfully! Make sure your device is in Pwned DFU mode with signature checks removed, then run this script again.\nExiting...', True)
         sys.exit()
 
-def restore(ipsw_path, is_cellular, keep_data, downgrade_10, is_verbose):
-    if keep_data:
-        utils.log('[VERBOSE] Requested to update instead of erase, saving data...', is_verbose)
-        update = '-u'
-    else:
-        update = ''
-    
+def restore(ipsw_path, is_cellular, downgrade_10, is_verbose):
     if downgrade_10:
         utils.log('[VERBOSE] Downgrading to iOS 10 using 10.3.3 SEP...', is_verbose)
         sep_fw = '-s work/tmp/1033_SEPBB/sep-firmware.im4p -m work/OTA_BuildManifest.plist'
@@ -56,7 +50,7 @@ def restore(ipsw_path, is_cellular, keep_data, downgrade_10, is_verbose):
     else:
         baseband = '--no-baseband'
 
-    futurerestore = subprocess.run(f'./resources/bin/futurerestore -t work/ipsw/blob.shsh2 {update} {sep_fw} {baseband} {ipsw_path}', stdout=sys.stdout, shell=True)
+    futurerestore = subprocess.run(f'./resources/bin/futurerestore -t work/ipsw/blob.shsh2 {sep_fw} {baseband} {ipsw_path}', stdout=sys.stdout, shell=True)
 
     if futurerestore.returncode != 0:
         utils.log('[ERROR] Restore failed!\nExiting...', True)
