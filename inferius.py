@@ -23,7 +23,6 @@ parser.add_argument('-d', '--device', help='Device identifier (e.g. iPhone10,2)'
 parser.add_argument('-f', '--ipsw', help='Path to custom IPSW', nargs=1)
 parser.add_argument('-i', '--version', help='The version of your stock IPSW', nargs=1)
 parser.add_argument('-r', '--restore', help='Restore custom IPSW after creation', action='store_true')
-parser.add_argument('-u', '--update', help='Restore device without losing data (requires --restore)', action='store_true')
 parser.add_argument('-v', '--verbose', help='Print verbose output for debugging', action='store_true')
 args = parser.parse_args()
 
@@ -66,11 +65,6 @@ def restore_ipsw(fresh_ipsw, ipsw_path):
             utils.log('[ERROR] IPSW is stock!\nExiting...', False)
             sys.exit()
 
-    if args.update:
-        keep_data = True
-    else:
-        keep_data = False
-
     device_check = input('Is your device is connected in Pwned DFU mode with signature checks removed? [Y/N]: ')
     utils.log(f'Is your device is connected in Pwned DFU mode with signature checks removed? [Y/N]: {device_check}', False)
 
@@ -100,7 +94,7 @@ def restore_ipsw(fresh_ipsw, ipsw_path):
         ipsw.fetch_1033_sepbb(device_identifier, args.version[0], is_verbose)
 
     restore.send_bootchain(processor, is_verbose)
-    futurerestore = restore.restore(ipsw_path, ipsw.is_cellular(device_identifier), keep_data, downgrade_10, is_verbose)
+    futurerestore = restore.restore(ipsw_path, ipsw.is_cellular(device_identifier), False, downgrade_10, is_verbose)
     if not futurerestore:
         sys.exit()
     else:

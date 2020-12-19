@@ -51,7 +51,6 @@ Below, you can find all the options Inferius has to offer
 | `-i VERSION` | `--version VERSION` | Specifies the version of your stock/custom IPSW |
 | `-f IPSW` | `--ipsw IPSW` | Specifies the path to the stock/custom IPSW |
 | `-r` | `--restore` | Restore custom IPSW |
-| `-u` | `--update` | Keeps your data when restoring (requires --restore) |
 | `-v` | `--verbose` | Print verbose output for debugging |
 
 ## Special thanks
