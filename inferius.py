@@ -191,10 +191,6 @@ else:
     firm_bundle_number = 1337
     utils.log('[VERBOSE] Device is not A9, continuing...', is_verbose)
 
-if args.update:
-    if not args.restore:
-        utils.log('[ERROR] Update argument specified without restore argument!\nExiting...', is_verbose)
-
 if args.create:
     fresh_ipsw = True
     if args.restore:
