@@ -1,4 +1,7 @@
 # Inferius
+
+**NOTE: FWIW, I completely recommend using the [rewrite branch](https://github.com/marijuanARM/Inferius/tree/rewrite) of Inferius, as it should be much faster, more efficient, and more reliable. As of now though, there is no iOS 10 downgrade support, so you'll have to use this branch if you're wanting to downgrade to iOS 10.**
+
 Inferius is an [xpwn](https://github.com/planetbeing/xpwn)-like tool, written in Python, which can create custom IPSWs with firmware bundles & restore 64-bit devices using a custom IPSW.
 
 Its current purpose is to downgrade devices (vulnerable to [checkm8](https://github.com/axi0mX/ipwndfu)) to previous iOS versions. However, there are other possible uses for this tool as well.
